@@ -1,4 +1,4 @@
-// El juego consiste en repetir los colores que aparecen por pantalla. Por el momento, crearé una simulación del mismo utilizando lo visto en el curso de JavaScript hasta la cuarta clase.
+// El juego consiste en repetir los colores que aparecen por pantalla. Por el momento, crearé una simulación del mismo utilizando lo visto en el curso de JavaScript hasta la cuarta clase, pero con algunas modificaciones, dado que todavía no sé bien cómo incorporar la lógica completa del juego. Este desarrollo seguramente cambiará a futuro.
 
 let green = "green";
 let red = "red";
@@ -14,7 +14,7 @@ function welcome() {
 
     console.log(knowTheRules)
 
-    if (knowTheRules === "si") {
+    if (knowTheRules === "yes") {
         startGame();
     } else {
         getRules();
@@ -30,13 +30,13 @@ function startGame() {
     while (colorDisplayed == seenColor) {
         colorDisplayed = (randomColor());
         alert(colorDisplayed);
-        seenColor = prompt("Ingrese el color visto:");
+        seenColor = prompt("Enter the color seen: ");
         console.log(colorDisplayed, seenColor);
     }
 
     let playAgain = prompt("You failed. Do you want to play again?");
 
-    if (playAgain == "si") {
+    if (playAgain == "yes") {
         startGame();
     } else {
         alert("Bye!");
