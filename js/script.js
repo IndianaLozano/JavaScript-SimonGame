@@ -16,8 +16,10 @@ function welcome() {
 
     if (knowTheRules === "yes") {
         startGame();
-    } else {
+    } else if (knowTheRules === "no") {
         getRules();
+    } else {
+        showPlayers();
     }
 }
 
@@ -51,4 +53,17 @@ function randomColor() {
     let values = ["red", "green", "yellow", "blue"];
     let valueToUse = values[Math.floor(Math.random() * values.length)];
     return valueToUse;
+}
+
+function showPlayers() {
+    const players = [
+        { name: "John", age: 22, higherScore: 6 },
+        { name: "Kathy", age: 25, higherScore: 15 },
+        { name: "Julia", age: 32, higherScore: 7 },
+        { name: "Mike", age: 35, higherScore: 8 }
+    ];
+
+    players.push({ name: "Emily", age: 22, higherScore: 9 });
+
+    return console.log(players);
 }
