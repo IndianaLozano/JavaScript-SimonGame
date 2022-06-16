@@ -1,12 +1,18 @@
 // El juego consiste en repetir los colores que aparecen por pantalla. Por el momento, crearé una simulación del mismo utilizando lo visto en el curso de JavaScript hasta la cuarta clase, pero con algunas modificaciones, dado que todavía no sé bien cómo incorporar la lógica completa del juego. Este desarrollo seguramente cambiará a futuro.
 
-let green = "green";
-let red = "red";
-let yellow = "yellow";
-let blue = "blue";
-
 let rules = "Simon will give the first signal. Repeat the signal by pressing the same color lens. Then, Simon will duplicate this first signal and add one. Continue playing as long as you can repeat each sequence of signals correctly."
+
+let players = [
+    { name: "John", higherScore: 6 },
+    { name: "Kathy", higherScore: 15 },
+    { name: "Julia", higherScore: 7 },
+    { name: "Mike", higherScore: 8 }
+];
+players.push({ name: "Emily", higherScore: 9 });
+
 welcome();
+
+// Ingreso al juego:
 
 function welcome() {
     alert("Let's play Simon!");
@@ -19,9 +25,11 @@ function welcome() {
     } else if (knowTheRules === "no") {
         getRules();
     } else {
-        showPlayers();
+        showPlayersByHigherScore(players);
     }
 }
+
+// Jugar: 
 
 function startGame() {
     console.log("Starting game");
@@ -45,6 +53,8 @@ function startGame() {
     }
 }
 
+// Obtener reglas: 
+
 function getRules() {
     return alert(rules);
 }
@@ -55,15 +65,20 @@ function randomColor() {
     return valueToUse;
 }
 
-function showPlayers() {
-    const players = [
-        { name: "John", age: 22, higherScore: 6 },
-        { name: "Kathy", age: 25, higherScore: 15 },
-        { name: "Julia", age: 32, higherScore: 7 },
-        { name: "Mike", age: 35, higherScore: 8 }
-    ];
+// Imprimir jugadores:
+function printPlayers(players) {
 
-    players.push({ name: "Emily", age: 22, higherScore: 9 });
+    for (let i = 0; i < players.length; i++) {
+        alert("Player: " + JSON.stringify(players[i]));
+    }
 
-    return console.log(players);
+}
+
+// Ordenar jugadores según el puntaje más alto e imprimirlos por pantalla
+function showPlayersByHigherScore(players) {
+
+    const playersByHigherScore = players.sort((a, b) => { return b.higherScore - a.higherScore });
+
+    return printPlayers(playersByHigherScore);
+
 }
