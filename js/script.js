@@ -1,84 +1,41 @@
 // El juego consiste en repetir los colores que aparecen por pantalla. Por el momento, crearé una simulación del mismo utilizando lo visto en el curso de JavaScript hasta la cuarta clase, pero con algunas modificaciones, dado que todavía no sé bien cómo incorporar la lógica completa del juego. Este desarrollo seguramente cambiará a futuro.
 
-let rules = "Simon will give the first signal. Repeat the signal by pressing the same color lens. Then, Simon will duplicate this first signal and add one. Continue playing as long as you can repeat each sequence of signals correctly."
+// Obtener el h1 del HTML byId y cambiarlo:
+const titulo = document.getElementById('game-name');
+console.log(titulo.innerHTML);
+titulo.innerHTML = "<h1>Simon Game</h1>";
+console.log(titulo.innerHTML);
 
-let players = [
-    { name: "John", higherScore: 6 },
-    { name: "Kathy", higherScore: 15 },
-    { name: "Julia", higherScore: 7 },
-    { name: "Mike", higherScore: 8 }
-];
-players.push({ name: "Emily", higherScore: 9 });
+// Obtener el h2 del HTML byId y cambiarlo:
+const rules = document.getElementById('game-description');
+console.log(rules.innerHTML);
+rules.innerHTML = "<h2>Repeat the sequence of colors that appears on the screen.</h2>";
+console.log(rules.innerHTML);
 
-welcome();
+const personName = prompt('Enter your name:');
+let bienvenida = document.createElement('h3');
+bienvenida.innerHTML = `¡Hello, ${personName}!`
+document.body.append(bienvenida);
 
-// Ingreso al juego:
+const personAge = prompt('Enter your age:');
+let age = document.createElement('h4');
+age.innerHTML = `You are ${personAge} years old.`
+document.body.append(age);
 
-function welcome() {
-    alert("Let's play Simon!");
-    let knowTheRules = prompt("Do you know the rules?");
+// const personAge = prompt('Enter your age:');
+// let age = document.getElementById('h4');
+// age.innerText = `You are ${personAge} years old`;
 
-    console.log(knowTheRules)
+const players = [{ id: 1, playerName: "John", higherScore: 125 },
+{ id: 2, playerName: "Sarah", higherScore: 70 },
+{ id: 3, playerName: "Julia", higherScore: 50 },
+{ id: 4, playerName: "Noah", higherScore: 100 }];
 
-    if (knowTheRules === "yes") {
-        startGame();
-    } else if (knowTheRules === "no") {
-        getRules();
-    } else {
-        showPlayersByHigherScore(players);
-    }
-}
-
-// Jugar: 
-
-function startGame() {
-    console.log("Starting game");
-    alert("Write the color that apears")
-    let colorDisplayed = "";
-    let seenColor = "";
-
-    while (colorDisplayed == seenColor) {
-        colorDisplayed = (randomColor());
-        alert(colorDisplayed);
-        seenColor = prompt("Enter the color seen: ");
-        console.log(colorDisplayed, seenColor);
-    }
-
-    let playAgain = prompt("You failed. Do you want to play again?");
-
-    if (playAgain == "yes") {
-        startGame();
-    } else {
-        alert("Bye!");
-    }
-}
-
-// Obtener reglas: 
-
-function getRules() {
-    return alert(rules);
-}
-
-function randomColor() {
-    let values = ["red", "green", "yellow", "blue"];
-    let valueToUse = values[Math.floor(Math.random() * values.length)];
-    return valueToUse;
-}
-
-// Imprimir jugadores:
-function printPlayers(players) {
-
-    for (let i = 0; i < players.length; i++) {
-        alert("Player: " + JSON.stringify(players[i]));
-    }
-
-}
-
-// Ordenar jugadores según el puntaje más alto e imprimirlos por pantalla
-function showPlayersByHigherScore(players) {
-
-    const playersByHigherScore = players.sort((a, b) => { return b.higherScore - a.higherScore });
-
-    return printPlayers(playersByHigherScore);
-
+for (const player of players) {
+    let content = document.createElement("div");
+    //Definimos el innerHTML del elemento con una plantilla de texto
+    content.innerHTML = `<h3> ID: ${player.id}</h3>
+                            <p>  Player: ${player.playerName}</p>
+                            <b> Higher Score: ${player.higherScore}</b>`;
+    document.body.appendChild(content);
 }
