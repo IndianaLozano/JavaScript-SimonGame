@@ -106,6 +106,7 @@ const strictButton = document.querySelector("#strict");
 const onButton = document.querySelector("#on");
 const startButton = document.querySelector("#start");
 
+// Verificar si el juego está en strict mode
 strictButton.addEventListener('click', (event) => {
     if (strictButton.checked == true) {
         strict = true;
@@ -114,6 +115,7 @@ strictButton.addEventListener('click', (event) => {
     }
 });
 
+// Verificar si el botón POWER está seleccionado 
 onButton.addEventListener('click', (event) => {
     if (onButton.checked == true) {
         on = true;
@@ -126,7 +128,15 @@ onButton.addEventListener('click', (event) => {
     }
 });
 
-startButton.addEventListener('click', (event) => {
+// Si se clickea START, se verifica si el POWER está seleccionado o si se ha ganado el juego. 
+startButton.addEventListener('click', async () => {
+    const { value } = await Swal.fire({
+        title: 'Enter your name',
+        input: 'text',
+        inputPlaceholder: 'Name'
+    })
+    //Guardo el nombre del jugador y no se borra al cerrar el navegador
+    localStorage.setItem('name', value)
     if (on || win) {
         play();
     }
@@ -171,6 +181,7 @@ function gameTurn() {
     }
 }
 
+// Color verde activo
 function one() {
     if (noise) {
         let audio = document.getElementById("clip1");
@@ -180,6 +191,7 @@ function one() {
     topLeft.style.backgroundColor = "lightgreen";
 }
 
+// Color rojo activo
 function two() {
     if (noise) {
         let audio = document.getElementById("clip2");
@@ -189,6 +201,7 @@ function two() {
     topRight.style.backgroundColor = "tomato";
 }
 
+// Color amarillo activo
 function three() {
     if (noise) {
         let audio = document.getElementById("clip3");
@@ -198,6 +211,7 @@ function three() {
     bottomLeft.style.backgroundColor = "yellow";
 }
 
+// Color azul activo
 function four() {
     if (noise) {
         let audio = document.getElementById("clip4");
