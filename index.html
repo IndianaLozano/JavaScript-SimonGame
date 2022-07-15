@@ -5,18 +5,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CODERHOUSE: Clase 01</title>
+    <title>Simon Game</title>
+    <link href='https://fonts.googleapis.com/css?family=Original+Surfer&effect=emboss' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+
+    <audio id="clip1">
+        <source src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3">
+        </source>
+    </audio>
+    <audio id="clip2">
+        <source src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3">
+        </source>
+    </audio>
+    <audio id="clip3">
+        <source src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3">
+        </source>
+    </audio>
+    <audio id="clip4">
+        <source src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3">
+        </source>
+    </audio>
 </head>
 
 <body>
-    <h1>Juego Simón</h1>
-    <h2>Repetir la secuencia de colores que se presentan en pantalla.</h2>
+    <div class="partners">
+        <button id="btn-partners" button>Click here if you want to know the people who contributed to this project.</button>
+    </div>
 
-    <!--
-        El juego consiste en repetir los colores que aparecen por pantalla. Por el momento, crearé una simulación del mismo utilizando lo visto en el curso de JavaScript hasta la cuarta clase, pero con algunas modificaciones, dado que todavía no sé bien cómo incorporar la lógica completa del juego. Este desarrollo seguramente cambiará a futuro.
-    -->
+    <div id="outer-circle">
+        <div id="topleft"></div>
+        <div id="topright"></div>
+        <div id="bottomleft"></div>
+        <div id="bottomright"></div>
+        <div id="inner-circle">
+            <div id="title" class="font-effect-emboss">SIMON</div>
+            <div id="switches">
+                <input type="checkbox" class="toggle" id="on">
+                <button class="button" id="start">Start</button>
+                <input type="checkbox" class="toggle" id="strict">
+            </div>
+            <div class="text1">
+                <span>POWER</span><span>STRICT</span>
+            </div>
+            <div id="turn"></div>
+            <div class="text2">
+                COUNT
+            </div>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 
