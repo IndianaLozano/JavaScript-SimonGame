@@ -97,6 +97,7 @@ let noise = true;
 let on = false;
 let win;
 
+const btnPartners = document.getElementById('btn-partners')
 const turnCounter = document.querySelector("#turn");
 const topLeft = document.querySelector("#topleft");
 const topRight = document.querySelector("#topright");
@@ -105,6 +106,21 @@ const bottomRight = document.querySelector("#bottomright");
 const strictButton = document.querySelector("#strict");
 const onButton = document.querySelector("#on");
 const startButton = document.querySelector("#start");
+
+// Conocer a las personas que contribuyeron al proyecto:
+btnPartners.addEventListener('click', (e) => {
+    fetch('../json/partners.json')
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data);
+        let content = "<div> THE TEAM: </div>"
+        for (const element of data){
+            content += `<div> ${element.name} is the ${element.position} </div>`
+        }
+        console.log(content);
+        document.getElementsByClassName('partners')[0].innerHTML = content
+    })
+})
 
 // Verificar si el juego está en strict mode
 strictButton.addEventListener('click', (event) => {
